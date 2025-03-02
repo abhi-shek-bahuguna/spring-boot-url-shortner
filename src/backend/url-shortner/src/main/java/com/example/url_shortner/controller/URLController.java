@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 public class URLController {
     URLService urlService;
 
-    URLController(URLService urlService){
-        this.urlService=urlService;
+    URLController(URLService urlService) {
+        this.urlService = urlService;
     }
 
     @GetMapping("/get/{shortUrl}")
@@ -19,7 +19,7 @@ public class URLController {
     }
 
     @PostMapping("/post")
-    public String postURL(@RequestBody String url){
+    public String postURL(@RequestBody String url) {
         return urlService.createShortURL(url);
     }
 }

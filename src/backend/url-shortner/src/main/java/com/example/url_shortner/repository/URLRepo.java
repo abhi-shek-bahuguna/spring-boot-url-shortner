@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface URLRepo extends JpaRepository<URL,String> {
+public interface URLRepo extends JpaRepository<URL, String> {
     @Query("SELECT COUNT(u) > 0 FROM URL u WHERE u.shortUrl = :shortUrl")
     boolean urlExists(@Param("shortUrl") String shortUrl);
 

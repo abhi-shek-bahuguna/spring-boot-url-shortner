@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 
 const UrlForm = () => {
-    const [text,setText] = useState("");
-    const [responseVisibility,setResponseVisibility] = useState("hidden");
-    const [responseText,setResponseText] = useState("");
-    const [originalUrl,setOriginalUrl] = useState("");
+    const [text, setText] = useState("");
+    const [responseVisibility, setResponseVisibility] = useState("hidden");
+    const [responseText, setResponseText] = useState("");
+    const [originalUrl, setOriginalUrl] = useState("");
 
-    const onChange = (e) =>{
+    const onChange = (e) => {
         setText(e.target.value);
     }
 
-    const onSubmit = async(e) =>{
+    const onSubmit = async (e) => {
         e.preventDefault();
         let response = await fetch("http://localhost:8080/post",
             {
-                method:"POST",
-                headers:{
-                    "Content-Type":"text/plain"
+                method: "POST",
+                headers: {
+                    "Content-Type": "text/plain"
                 },
-                body:text
+                body: text
             }
         );
 
@@ -27,9 +27,9 @@ const UrlForm = () => {
 
         response = await fetch(`http://localhost:8080/get/${data}`,
             {
-                method:"GET",
-                headers:{
-                    "Content-Type" : "text/plain"
+                method: "GET",
+                headers: {
+                    "Content-Type": "text/plain"
                 }
             }
         );
@@ -77,20 +77,20 @@ const UrlForm = () => {
 
     return (
         <form onSubmit={onSubmit} style={formStyle}>
-        <div>
-        <label style={labelStyle} >Enter your URL</label>
-        <input onChange={onChange}
-            value={text}
-            style={inputStyle}
-        />
-        </div>
-        <button style={buttonSytle}>Submit</button>
-        <div style={{visibility: responseVisibility}}>
-            <label>Your short URL : </label>
-            <a href={originalUrl} target="_blank">
-                {responseText}
-            </a>
-        </div>
+            <div>
+                <label style={labelStyle} >Enter your URL</label>
+                <input onChange={onChange}
+                    value={text}
+                    style={inputStyle}
+                />
+            </div>
+            <button style={buttonSytle}>Submit</button>
+            <div style={{ visibility: responseVisibility }}>
+                <label>Your short URL : </label>
+                <a href={originalUrl} target="_blank">
+                    {responseText}
+                </a>
+            </div>
         </form>
     );
 };

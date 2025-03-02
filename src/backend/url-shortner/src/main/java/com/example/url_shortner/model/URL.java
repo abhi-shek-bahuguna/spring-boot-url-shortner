@@ -17,24 +17,24 @@ public class URL {
     private LocalDateTime createdOn;
 
     public URL(String url, String shortUrl, LocalDateTime createdOn) {
-        this.url=url;
-        this.shortUrl=shortUrl;
-        this.createdOn=createdOn;
+        this.url = url;
+        this.shortUrl = shortUrl;
+        this.createdOn = createdOn;
     }
 
-    public URL(){
+    public URL() {
 
     }
 
-    private String getURL(){
+    private String getURL() {
         return url;
     }
 
-    private String getShortURL(){
+    private String getShortURL() {
         return shortUrl;
     }
 
-    private LocalDateTime getCreatedOn(){
+    private LocalDateTime getCreatedOn() {
         return createdOn;
     }
 }

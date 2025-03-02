@@ -16,19 +16,19 @@ public class URLService {
     private static final String BASE_URL = "tinyurl";
     URLRepo urlRepo;
 
-    URLService(URLRepo urlRepo){
-        this.urlRepo=urlRepo;
+    URLService(URLRepo urlRepo) {
+        this.urlRepo = urlRepo;
     }
 
-    public String getURL(String shortUrl){
-        if(urlRepo.urlExists(shortUrl)) {
+    public String getURL(String shortUrl) {
+        if (urlRepo.urlExists(shortUrl)) {
             return urlRepo.getUrl(shortUrl);
         }
         return "URL does not exists";
     }
 
-    public String createShortURL(String url){
-        String shortURL= BASE_URL+NanoIdUtils.randomNanoId(new SecureRandom(), ALPHABET,ID_LENGTH)+".com";
+    public String createShortURL(String url) {
+        String shortURL = BASE_URL + NanoIdUtils.randomNanoId(new SecureRandom(), ALPHABET, ID_LENGTH) + ".com";
         LocalDateTime createdOn = LocalDateTime.now();
         urlRepo.save(new URL(url, shortURL, createdOn));
         return shortURL;
